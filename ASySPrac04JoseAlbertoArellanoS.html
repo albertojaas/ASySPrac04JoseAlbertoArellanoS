@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Pr&aacute;ctica 4: Convoluci&oacute;n y Correlaci&oacute;n de se&ntilde;ales en tiempo continuo</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-06"><meta name="DC.source" content="p4.m"><style type="text/css">
+      --><title>Pr&aacute;ctica 4: Convoluci&oacute;n y Correlaci&oacute;n de se&ntilde;ales en tiempo continuo</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2019-05-07"><meta name="DC.source" content="p4.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,26 +66,27 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Pr&aacute;ctica 4: Convoluci&oacute;n y Correlaci&oacute;n de se&ntilde;ales en tiempo continuo</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Introducci&oacute;n</a></li><li><a href="#2">Punto 1</a></li><li><a href="#3">Punto 2</a></li><li><a href="#4">Punto 3</a></li><li><a href="#5">Punto 4</a></li><li><a href="#6">Punto 5</a></li></ul></div><h2>Introducci&oacute;n<a name="1"></a></h2><p>Para poder dar inicio a la practica debemos recordar que existen varios metodos n&uacute;mericos en los que nos podemos apoyar para el calculo de las convoluciones en tiempo discreto que estaremos viendo en la siguietne practica.</p><div><ul><li><b><i>Integreci&oacute;n</i></b></li></ul></div><p>Una de las versiones del teorema fuendamenteal del calculo, donde f es integrable y la regi&oacute;n bajo la curva est&aacute; bien definida. Existen diferentes t&eacute;cnicas de integraci&oacute;n como lo son: <i>s</i> Cambio de variable, integraci&oacute;n por partes, sustituci&oacute;n trigonom&eacute;trica, fracciones parciales, entre otras <i>s</i>, ya que toda funcion continua es integrable.</p><p><img vspace="5" hspace="5" src="imagen1.JPG" alt=""> </p><p>Al no aplicarse el TFC, se puede aproximar la funci&oacute;n a un polinomio, teniendo en cuenta que existe un error.</p><p><a href="https://www.youtube.com/watch?v=OFHAN-WwLEw&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=2&amp;t=0s">video</a></p><div><ul><li><b><i>F&oacute;rmulas cerradas de Newton-Cotes (n=1)</i></b></li></ul></div><p>Se utilizan polinoios de interpretaci&oacute;n de Lagrange que aporximan una integral a un polinomio de grado n que coincide con la funcion en determinados puentos m&aacute;s un termino de error, integrando el polinomio en lugar de la funcion. Las tambi&eacute;n llamadas formula cerrada de (n+1) puntos, siendo n el n&uacute;mero del grado del polinomio d&oacute;nde el primer punto <img src="p4_eq14217025108342228743.png" alt="$X_0$"> es el punto a y el &uacute;ltimo punto <img src="p4_eq01643830081778808960.png" alt="$X_n$"> es el punto b. Los puntos intermedios estan separados una distancia h entre s&iacute; (paso), donde:</p><p><img vspace="5" hspace="5" src="imagen3.PNG" alt=""> </p><p><img vspace="5" hspace="5" src="imagen4.PNG" alt=""> </p><p>La primera formula de interpolaci&oacute;n de Newtonn-Cotes se llama Regla del trapecio, debido a que la primera parte de la aproximaci&oacute;n nos define el &aacute;rea de un trapecio, esta encuetra un polinomio de grado 1. Para esto se necesitan dos puntos de interpolaci&oacute;n.</p><p><img vspace="5" hspace="5" src="imagen5.PNG" alt=""> </p><p>La segunda parte del polinomio se utiliza para calcular el error, por lo tanto, para un polinomio de grado 1, el error va a ser cero, debido a que la segunda derivada de dicho polinomio es cero.</p><p><a href="https://www.youtube.com/watch?v=Fe79KWPf0Do&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=2">video</a></p><div><ul><li><b><i>Regla de Simpson o regla de Newton-Cotes de tres puntos</i></b></li></ul></div><p>Se utiliza para extrapolar tres puntos para encontrar un polinomio de segundo grado.</p><p><img vspace="5" hspace="5" src="imagen2.PNG" alt=""> </p><p><img vspace="5" hspace="5" src="imagen3.PNG" alt=""> </p><p><b><i>Regla de Simpson o regla de Newton-Cotes de 4 puntos</i></b></p><p><img vspace="5" hspace="5" src="imagen7.PNG" alt=""> </p><p><a href="https://www.youtube.com/watch?v=Ykgdo9Sr354&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=3">video</a></p><div><ul><li><b><i>Regla compuesta del trapecio</i></b></li></ul></div><p>El concepto de la regla compuesta del trapecio es similar al de las sumas de Riemann, sin embargo, la diferencia entre la suma de Riemann y la regla del trapecio es que utiliza trapecios en lugar de rect&aacute;ngulos, eso quiere decir que entre mas trapecios se utilicen la aproximacion a la se&ntilde;al ser&aacute; m&aacute;s exacta.</p><p>Para esto se utiliza la siguiente formula:</p><p><img vspace="5" hspace="5" src="imagen10.PNG" alt=""> </p><div><ul><li><b><i>Regla compuesta de Simpson</i></b></li></ul></div><p>En el caso de la regla compuesta de Simpson utiliza funciones de 3er grado ($x^3), por lo que deividimos la se&ntilde;al en varios intervalos, es necesario utilizar 3 intervalos para cada claculo, tambien hay que tomar en cuenta que hay puntos que son el inicio y final de dos diferentes se&ntilde;ales, para poder obtener los valores de estas aproximaciones se utiliza la siguiente formula:</p><p><img vspace="5" hspace="5" src="imagen9.PNG" alt=""> </p><p><a href="https://www.youtube.com/watch?v=UJMZviPb6GE&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=4">video</a></p><div><ul><li><b><i>Cuadratura Gaussiana</i></b></li></ul></div><p>En la cuadratura Gaussiana selecciona los puntos de evaluacion de manera optima y no en una forma igulamente especializada, construida para dar el resultado de un polinomio de grado <img src="p4_eq08658037100667000828.png" alt="$2n-1$"> o menos, eleginles para los puntos <img src="p4_eq13593336019818723347.png" alt="$X_i$"> y los coeficinetes <img src="p4_eq14165179170607367537.png" alt="$W_i$"> para <img src="p4_eq08724691003062515064.png" alt="$i=1, ..., n$"> . El dominio de tal cuadratura por regla del <img src="p4_eq00684135438956725594.png" alt="$[-1:1]$"></p><p><img vspace="5" hspace="5" src="imagen8.PNG" alt=""> </p><p><a href="https://www.youtube.com/watch?v=6i4N328QbpY&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=5">video</a></p><h2>Punto 1<a name="2"></a></h2><p>Para el PR04 reporte la grafica de la simulaci&oacute;n n&uacute;merica de la convoluci&oacute;n y compare con el resultado an&aacute;litico que obtuvo para el problema 1.</p><pre class="codeinput"><span class="comment">% siendo los valores para de _x_ y _h_ los siguientes:</span>
+  </style></head><body><div class="content"><h1>Pr&aacute;ctica 4: Convoluci&oacute;n y Correlaci&oacute;n de se&ntilde;ales en tiempo continuo</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Introducci&oacute;n</a></li><li><a href="#2">Punto 1</a></li><li><a href="#3">Punto 2</a></li><li><a href="#4">Punto 3</a></li><li><a href="#5">Punto 4</a></li><li><a href="#6">Punto 5</a></li></ul></div><h2>Introducci&oacute;n<a name="1"></a></h2><p>Para poder dar inicio a la practica debemos recordar que existen varios metodos n&uacute;mericos en los que nos podemos apoyar para el calculo de las convoluciones en tiempo discreto que estaremos viendo en la siguietne practica.</p><div><ul><li><b><i>Integreci&oacute;n</i></b></li></ul></div><p>Una de las versiones del teorema fuendamenteal del calculo, donde f es integrable y la regi&oacute;n bajo la curva est&aacute; bien definida. Existen diferentes t&eacute;cnicas de integraci&oacute;n como lo son: <i>s</i> Cambio de variable, integraci&oacute;n por partes, sustituci&oacute;n trigonom&eacute;trica, fracciones parciales, entre otras <i>s</i>, ya que toda funcion continua es integrable.</p><p><img vspace="5" hspace="5" src="imagen1.jpg" alt=""> </p><p>Al no aplicarse el TFC, se puede aproximar la funci&oacute;n a un polinomio, teniendo en cuenta que existe un error.</p><p><a href="https://www.youtube.com/watch?v=OFHAN-WwLEw&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=2&amp;t=0s">video</a></p><div><ul><li><b><i>F&oacute;rmulas cerradas de Newton-Cotes (n=1)</i></b></li></ul></div><p>Se utilizan polinoios de interpretaci&oacute;n de Lagrange que aporximan una integral a un polinomio de grado n que coincide con la funcion en determinados puentos m&aacute;s un termino de error, integrando el polinomio en lugar de la funcion. Las tambi&eacute;n llamadas formula cerrada de (n+1) puntos, siendo n el n&uacute;mero del grado del polinomio d&oacute;nde el primer punto <img src="p4_eq14217025108342228743.png" alt="$X_0$"> es el punto a y el &uacute;ltimo punto <img src="p4_eq01643830081778808960.png" alt="$X_n$"> es el punto b. Los puntos intermedios estan separados una distancia h entre s&iacute; (paso), donde:</p><p><img vspace="5" hspace="5" src="imagen3.png" alt=""> </p><p><img vspace="5" hspace="5" src="imagen4.png" alt=""> </p><p>La primera formula de interpolaci&oacute;n de Newtonn-Cotes se llama Regla del trapecio, debido a que la primera parte de la aproximaci&oacute;n nos define el &aacute;rea de un trapecio, esta encuetra un polinomio de grado 1. Para esto se necesitan dos puntos de interpolaci&oacute;n.</p><p><img vspace="5" hspace="5" src="imagen5.png" alt=""> </p><p>La segunda parte del polinomio se utiliza para calcular el error, por lo tanto, para un polinomio de grado 1, el error va a ser cero, debido a que la segunda derivada de dicho polinomio es cero.</p><p><a href="https://www.youtube.com/watch?v=Fe79KWPf0Do&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=2">video</a></p><div><ul><li><b><i>Regla de Simpson o regla de Newton-Cotes de tres puntos</i></b></li></ul></div><p>Se utiliza para extrapolar tres puntos para encontrar un polinomio de segundo grado.</p><p><img vspace="5" hspace="5" src="imagen2.png" alt=""> </p><p><img vspace="5" hspace="5" src="imagen3.png" alt=""> </p><p><b><i>Regla de Simpson o regla de Newton-Cotes de 4 puntos</i></b></p><p><img vspace="5" hspace="5" src="imagen7.png" alt=""> </p><p><a href="https://www.youtube.com/watch?v=Ykgdo9Sr354&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=3">video</a></p><div><ul><li><b><i>Regla compuesta del trapecio</i></b></li></ul></div><p>El concepto de la regla compuesta del trapecio es similar al de las sumas de Riemann, sin embargo, la diferencia entre la suma de Riemann y la regla del trapecio es que utiliza trapecios en lugar de rect&aacute;ngulos, eso quiere decir que entre mas trapecios se utilicen la aproximacion a la se&ntilde;al ser&aacute; m&aacute;s exacta.</p><p>Para esto se utiliza la siguiente formula:</p><p><img vspace="5" hspace="5" src="imagen10.png" alt=""> </p><div><ul><li><b><i>Regla compuesta de Simpson</i></b></li></ul></div><p>En el caso de la regla compuesta de Simpson utiliza funciones de 3er grado ($x^3), por lo que deividimos la se&ntilde;al en varios intervalos, es necesario utilizar 3 intervalos para cada claculo, tambien hay que tomar en cuenta que hay puntos que son el inicio y final de dos diferentes se&ntilde;ales, para poder obtener los valores de estas aproximaciones se utiliza la siguiente formula:</p><p><img vspace="5" hspace="5" src="imagen9.png" alt=""> </p><p><a href="https://www.youtube.com/watch?v=UJMZviPb6GE&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=4">video</a></p><div><ul><li><b><i>Cuadratura Gaussiana</i></b></li></ul></div><p>En la cuadratura Gaussiana selecciona los puntos de evaluacion de manera optima y no en una forma igulamente especializada, construida para dar el resultado de un polinomio de grado <img src="p4_eq08658037100667000828.png" alt="$2n-1$"> o menos, eleginles para los puntos <img src="p4_eq13593336019818723347.png" alt="$X_i$"> y los coeficinetes <img src="p4_eq14165179170607367537.png" alt="$W_i$"> para <img src="p4_eq08724691003062515064.png" alt="$i=1, ..., n$"> . El dominio de tal cuadratura por regla del <img src="p4_eq00684135438956725594.png" alt="$[-1:1]$"></p><p><img vspace="5" hspace="5" src="imagen8.png" alt=""> </p><p><a href="https://www.youtube.com/watch?v=6i4N328QbpY&amp;list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&amp;index=5">video</a></p><h2>Punto 1<a name="2"></a></h2><p>Para el PR04 reporte la grafica de la simulaci&oacute;n n&uacute;merica de la convoluci&oacute;n y compare con el resultado an&aacute;litico que obtuvo para el problema 1.</p><pre class="codeinput"><span class="comment">% siendo los valores para de _x_ y _h_ los siguientes:</span>
 x=@(t) exp(-t).*(t&gt;=0 &amp; t&lt;1);
 h = @(t) t.*(t&gt;=-1 &amp; t&lt;1);
-unt(x, h)
+convconm(x,h)
 </pre><img vspace="5" hspace="5" src="p4_01.png" alt=""> <h2>Punto 2<a name="3"></a></h2><p>Para el PR05 reporte la grafica de la simulaci&oacute;n n&uacute;merica de la correalci&oacute;n y compare con el resultado an&aacute;litico que obtuvo para el problema e).</p><pre class="codeinput">x=@(t) ((t&gt;=0&amp;t&lt;3.0) - (t&gt;=3&amp;t&lt;4));
 h=@(t) ((t&gt;=0&amp;t&lt;3.0) - (t&gt;=3&amp;t&lt;4));
-unt (x,h)
+convconm (x,h)
 </pre><img vspace="5" hspace="5" src="p4_02.png" alt=""> <h2>Punto 3<a name="4"></a></h2><p>Realice la simuaci&oacute;n de la convoluci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1</p><p><img vspace="5" hspace="5" src="simulacion1.GIF" alt=""> </p><pre class="codeinput">n=-5:5;
 a = [0 0 -9 -6 -3 0 3 6 9 0 0];
 b = [0 0 0 4 2 0 2 4 0 0 0];
 convdisc([n;a],[n;b])
 <span class="comment">%</span>
-</pre><img vspace="5" hspace="5" src="p4_03.gif" alt=""> <h2>Punto 4<a name="5"></a></h2><p>Realice la simuaci&oacute;n de la correlaci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1</p><pre class="codeinput">n=-5:5;
+</pre><img vspace="5" hspace="5" src="p4_03.png" alt=""> <h2>Punto 4<a name="5"></a></h2><p>Realice la simuaci&oacute;n de la correlaci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1</p><pre class="codeinput">n=-5:5;
 a = [0 0 -9 -6 -3 0 3 6 9 0 0];
 b = [0 0 0 4 2 0 2 4 0 0 0];
+b2 = [0 0 0 4 2 0 2 4 0 0 0];
 
-<span class="comment">% Observaci&oacute;n: Para hacer la correlaci&oacute;n es necesario invertir la segunda se&ntilde;al, pero dado que al invertir</span>
-<span class="comment">% esta quedaria igual, entonces, se deja la se&ntilde;al como esta.</span>
-convdisc([n;a],[n;b])
-</pre><img vspace="5" hspace="5" src="p4_04.gif" alt=""> <h2>Punto 5<a name="6"></a></h2><p>Realice la la convoluci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1 utilizando el comando conv de MATLAB, muestre el c&oacute;digo utilizado y gr&aacute;fique el resultado, sugerencia: Utilice las propiedades de traslaci&oacute;n de la convoluci&oacute;n.</p><pre class="codeinput">clc
+<span class="comment">% Observaci&oacute;n: Para hacer la correlaci&oacute;n es necesario invertir la segunda se&ntilde;al si queremos resolverlo por convoluci&oacute;n, pero dado que al invertir</span>
+<span class="comment">% esta quedaria igual, entonces, se deja la se&ntilde;al como est&aacute;.</span>
+convdisc([n;a],[n;b2])
+</pre><img vspace="5" hspace="5" src="p4_04.png" alt=""> <h2>Punto 5<a name="6"></a></h2><p>Realice la la convoluci&oacute;n de las se&ntilde;ales (c) con (d) del problema 3.1.1 utilizando el comando conv de MATLAB, muestre el c&oacute;digo utilizado y gr&aacute;fique el resultado, sugerencia: Utilice las propiedades de traslaci&oacute;n de la convoluci&oacute;n.</p><pre class="codeinput">clc
 clear <span class="string">all</span>
 close <span class="string">all</span>
 
@@ -107,6 +108,8 @@ long_fg_n=length(f_n)+length(g_n)-1;
 stem(n,fg_n,<span class="string">'k'</span>,<span class="string">'filled'</span>,<span class="string">'linewidth'</span>,2);
 title(<span class="string">'Convoluci&oacute;n'</span>);
 grid <span class="string">on</span>
+
+<span class="comment">%%Anexo</span>
 </pre><img vspace="5" hspace="5" src="p4_05.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Práctica 4: Convolución y Correlación de señales en tiempo continuo
@@ -127,7 +130,7 @@ grid <span class="string">on</span>
 % entre otras _s_, ya que toda funcion continua es integrable.
 %
 % 
-% <<imagen1.JPG>>
+% <<imagen1.jpg>>
 %
 % Al no aplicarse el TFC, se puede aproximar la función a un polinomio,
 % teniendo en cuenta que existe un error.
@@ -146,16 +149,16 @@ grid <span class="string">on</span>
 % último punto $X_n$ es el punto b. Los puntos intermedios estan separados
 % una distancia h entre sí (paso), donde:
 %
-% <<imagen3.PNG>>
+% <<imagen3.png>>
 %
-% <<imagen4.PNG>>
+% <<imagen4.png>>
 %
 % La primera formula de interpolación de Newtonn-Cotes se llama Regla del
 % trapecio, debido a que la primera parte de la aproximación nos define el
 % área de un trapecio, esta encuetra un polinomio de grado 1. Para esto se
 % necesitan dos puntos de interpolación.
 %
-% <<imagen5.PNG>>
+% <<imagen5.png>>
 %
 % La segunda parte del polinomio se utiliza para calcular el error, por lo
 % tanto, para un polinomio de grado 1, el error va a ser cero, debido a que
@@ -168,13 +171,13 @@ grid <span class="string">on</span>
 % Se utiliza para extrapolar tres puntos para encontrar un polinomio de
 % segundo grado.
 %
-% <<imagen2.PNG>>
+% <<imagen2.png>>
 %
-% <<imagen3.PNG>>
+% <<imagen3.png>>
 %
 % *_Regla de Simpson o regla de Newton-Cotes de 4 puntos_*
 %
-% <<imagen7.PNG>>
+% <<imagen7.png>>
 %
 % <https://www.youtube.com/watch?v=Ykgdo9Sr354&list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&index=3 video>
 %
@@ -188,7 +191,7 @@ grid <span class="string">on</span>
 %
 % Para esto se utiliza la siguiente formula:
 %
-% <<imagen10.PNG>>
+% <<imagen10.png>>
 %
 % * *_Regla compuesta de Simpson_*
 %
@@ -199,7 +202,7 @@ grid <span class="string">on</span>
 % señales, para poder obtener los valores de estas aproximaciones se
 % utiliza la siguiente formula:
 %
-% <<imagen9.PNG>>
+% <<imagen9.png>>
 %
 % <https://www.youtube.com/watch?v=UJMZviPb6GE&list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&index=4 video>
 %
@@ -211,7 +214,7 @@ grid <span class="string">on</span>
 % puntos $X_i$ y los coeficinetes $W_i$ para $i=1, ..., n$ . El dominio de
 % tal cuadratura por regla del $[-1:1]$
 %
-% <<imagen8.PNG>>
+% <<imagen8.png>>
 %
 % <https://www.youtube.com/watch?v=6i4N328QbpY&list=PLSC7gO5dTNPewJkJ5Zh3Y7xHfy_fnDKqD&index=5 video>
 %% Punto 1 
@@ -224,7 +227,7 @@ grid <span class="string">on</span>
 % siendo los valores para de _x_ y _h_ los siguientes:
 x=@(t) exp(-t).*(t>=0 & t<1);
 h = @(t) t.*(t>=-1 & t<1);
-unt(x, h)
+convconm(x,h)
   
  %% Punto 2
 %
@@ -233,7 +236,7 @@ unt(x, h)
 %
 x=@(t) ((t>=0&t<3.0) - (t>=3&t<4));
 h=@(t) ((t>=0&t<3.0) - (t>=3&t<4));
-unt (x,h)
+convconm (x,h)
 
 %% Punto 3
 %
@@ -254,10 +257,11 @@ convdisc([n;a],[n;b])
 n=-5:5;
 a = [0 0 -9 -6 -3 0 3 6 9 0 0];
 b = [0 0 0 4 2 0 2 4 0 0 0];
+b2 = [0 0 0 4 2 0 2 4 0 0 0];
 
-% Observación: Para hacer la correlación es necesario invertir la segunda señal, pero dado que al invertir
-% esta quedaria igual, entonces, se deja la señal como esta.
-convdisc([n;a],[n;b])
+% Observación: Para hacer la correlación es necesario invertir la segunda señal si queremos resolverlo por convolución, pero dado que al invertir
+% esta quedaria igual, entonces, se deja la señal como está.
+convdisc([n;a],[n;b2])
 
 
 %% Punto 5
@@ -288,6 +292,6 @@ stem(n,fg_n,'k','filled','linewidth',2);
 title('Convolución');
 grid on
 
-
+%%Anexo
 ##### SOURCE END #####
 --></body></html>
